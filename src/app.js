@@ -1,5 +1,21 @@
 import React from "react";
+import { PageLayout } from "./components/pageLayout";
+import { AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
+import ProfileContent from "./profileContent";
+import { ProfileData } from "./graph";
+import { callMsGraph } from "./graph";
 
-export default function App() {
-  return <h1>Hello World</h1>;
+function App() {
+  return (
+    <PageLayout>
+      <AuthenticatedTemplate>
+        <ProfileContent />
+      </AuthenticatedTemplate>
+      <UnauthenticatedTemplate>
+        <p>You are not signed in! Please sign in.</p>
+      </UnauthenticatedTemplate>
+    </PageLayout>
+  );
 }
+
+export default App;
